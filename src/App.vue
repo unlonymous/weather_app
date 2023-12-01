@@ -1,16 +1,18 @@
 <template>
+  <!-- typeof for changing the background -->
   <div id="App" :class="(typeof weather.main !== 'undefined' && weather.main.temp>16?'warm':'')">
     <main>
       <div class="search-box">
         <input 
           type="text" 
           class="search-bar" 
-          placeholder="Search ..." 
+          placeholder="Try type Jakarta" 
+          
           v-model="query"
           @keypress="fetchWeather"
         />
       </div>
-
+      <!-- v-if for make the main menu empty -->
       <div class="weather-wrap" v-if="(typeof weather.main != 'undefined')">
         <div class="location-box">
           <div class="location">{{ weather.name}}, {{ weather.sys.country }}</div>
@@ -116,6 +118,10 @@ export default {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 0px 16px 0px 16px;
     transition: 0.4s;
+  }
+
+  .search-bar::placeholder {
+    font-style: italic;
   }
 
   .search-box .search-bar:focus {
