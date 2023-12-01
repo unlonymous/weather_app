@@ -1,5 +1,5 @@
 <template>
-  <div id="App" :class="typeof weather !== 'undefined' && typeof weather.main !== 'undefined' && weather.main.temp > 16 ? 'warm' : ''">
+  <div id="App" :class="(typeof weather.main !== 'undefined' && weather.main.temp>16?'warm':'')">
     <main>
       <div class="search-box">
         <input 
@@ -76,14 +76,14 @@ export default {
     font-family: 'montserrat', sans-serif;
   }
 
-  #app {
+  #App {
     background-image: url('./assets/cold-wt.jpg');
     background-size: cover;
     background-image: bottom;
     transition: 0.4s;
   }
 
-  #app.warm {
+  #App.warm {
     background-image: url('./assets/warm-wt.jpg');
   }
 
@@ -92,13 +92,6 @@ export default {
     padding: 25px;
 
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
-  }
-
-  @media only screen and (max-width: 768px) {
-    main {
-      /* Add mobile-specific styles here */
-      background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
-    }
   }
 
   .search-box {
